@@ -1,6 +1,8 @@
-import './App.css';
+import './index.css';
 
 function App() {
+	document.body.classList.add('body');
+
   return (
 	<div className="page">
 		<header className="header">
