@@ -1,22 +1,43 @@
 function Main(){
+
+	const handleEditAvatarClick = () => {
+		console.log('>>> handleEditAvatarClick');
+
+		document.querySelector('#popup-avatar').classList.add('popup_opened');
+	}
+
+	const handleEditProfileClick = () => {
+		console.log('>>> handleEditProfileClick');
+
+		document.querySelector('#popup-profile').classList.add('popup_opened');
+	}
+
+	const handleAddPlaceClick = () => {
+		console.log('>>> handleAddPlaceClick');
+
+		document.querySelector('#popup-newcard').classList.add('popup_opened');
+	}
+
+
+
 	return (
 		<main className="content">
 			<section className="profile">
 				<div className="profile__figure">
 					<img className="profile__avatar" src="#" alt="Фотография" />
-					<button className="profile__button profile__button_type_avatar" type="button" name="button"
+					<button onClick={handleEditAvatarClick} className="profile__button profile__button_type_avatar" type="button" name="button"
 						aria-label="Обновить фотографию"></button>
 				</div>
 
 				<div className="profile__description">
 					<div className="profile__info">
 						<h1 className="profile__header"></h1>
-						<button className="profile__button profile__button_type_edit" type="button" name="button" aria-label="Редактировать"></button>
+						<button onClick={handleEditProfileClick} className="profile__button profile__button_type_edit" type="button" name="button" aria-label="Редактировать"></button>
 					</div>
 					<p className="profile__subtitle"></p>
 				</div>
 
-				<button className="profile__button profile__button_type_add" type="button" name="button" aria-label="Добавить"></button>
+				<button onClick={handleAddPlaceClick} className="profile__button profile__button_type_add" type="button" name="button" aria-label="Добавить"></button>
 			</section>
 
 			<section id="cards" className="cards" aria-label="Посещенные места"></section>
