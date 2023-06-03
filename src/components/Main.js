@@ -1,14 +1,5 @@
-import headerLogo from './images/header/header-logo.svg';
-import './index.css';
-
-function App() {
-	document.body.classList.add('body');
-
-  return (
-	<div className="page">
-		<header className="header">
-				<img className="header__logo" src={headerLogo} alt="Логотип" loading="lazy" />
-		</header>
+function Main(){
+	return (
 		<main className="content">
 			<section className="profile">
 				<div className="profile__figure">
@@ -193,11 +184,7 @@ function App() {
 			</template>
 
 		</main>
-		<footer className="footer">
-			<p className="footer__copyright">© 2023. Евгений М.</p>
-		</footer>
-	</div>
-  );
+	)
 }
 
-export default App;
+export default Main;
