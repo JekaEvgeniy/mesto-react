@@ -27,7 +27,7 @@ function Main(){
 					<div className="popup__container">
 						<h2 className="popup__title">Редактировать профиль</h2>
 
-						<form action="#" name="profile" className="popup__form" novalidate>
+						<form action="#" name="profile" className="popup__form" noValidate>
 							<input
 								required
 								id="profile-name-input"
@@ -35,9 +35,9 @@ function Main(){
 								type="text"
 								name="name"
 								placeholder="ФИО"
-								minlength="2"
-								maxlength="40"
-								autocomplete="off"
+								minLength="2"
+								maxLength="40"
+								autoComplete="off"
 							/>
 							<span className="popup__error" id="profile-name-input-error"></span>
 
@@ -48,9 +48,9 @@ function Main(){
 								type="text"
 								name="about"
 								placeholder="Вид деятельности"
-								minlength="2"
-								maxlength="200"
-								autocomplete="off"
+								minLength="2"
+								maxLength="200"
+								autoComplete="off"
 							/>
 							<span className="popup__error" id="profile-about-input-error"></span>
 
@@ -84,7 +84,7 @@ function Main(){
 					<div className="popup__container">
 						<h2 className="popup__title">Новое место</h2>
 
-						<form action="#" name="card" className="popup__form" novalidate>
+						<form action="#" name="card" className="popup__form" noValidate>
 
 							<input
 								required
@@ -93,9 +93,9 @@ function Main(){
 								type="text"
 								name="name"
 								placeholder="Название"
-								minlength="2"
-								maxlength="30"
-								autocomplete="off"
+								minLength="2"
+								maxLength="30"
+								autoComplete="off"
 							/>
 							<span className="popup__error" id="newcard-title-input-error"></span>
 
@@ -106,7 +106,7 @@ function Main(){
 								type="url"
 								name="link"
 								placeholder="Ссылка на картинку"
-								autocomplete="off"
+								autoComplete="off"
 							/>
 							<span className="popup__error" id="newcard-url-input-error"></span>
 
@@ -126,7 +126,7 @@ function Main(){
 					<div className="popup__container">
 						<h2 className="popup__title">Обновить аватар</h2>
 
-						<form action="#" name="avatar" className="popup__form" novalidate>
+						<form action="#" name="avatar" className="popup__form" noValidate>
 
 							<input
 								required
@@ -135,7 +135,7 @@ function Main(){
 								type="url"
 								name="avatar"
 								placeholder="Ссылка на картинку"
-								autocomplete="off"
+								autoComplete="off"
 							/>
 							<span className="popup__error" id="avatar-url-input-error"></span>
 
@@ -154,7 +154,7 @@ function Main(){
 					<div className="popup__container">
 						<h2 className="popup__title">Вы уверены?</h2>
 
-						<form action="#" name="qustion" className="popup__form" novalidate>
+						<form action="#" name="qustion" className="popup__form" noValidate>
 							<button className="popup__button" type="submit">Да</button>
 						</form>
 					</div>
