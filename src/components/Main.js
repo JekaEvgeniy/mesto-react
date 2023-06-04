@@ -20,7 +20,7 @@ function Main(props){
 
 			})
 			.catch( err => console.error(err) );
-	})
+	}, [])
 
 	React.useEffect( () => {
 		api.getCards()

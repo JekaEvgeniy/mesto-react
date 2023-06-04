@@ -8,8 +8,6 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 function App() {
-	document.body.classList.add('body');
-
 	const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
