@@ -16,7 +16,7 @@ function Main(props){
 					<p className="profile__subtitle"></p>
 				</div>
 
-				<button className="profile__button profile__button_type_add" type="button" name="button" aria-label="Добавить"></button>
+				<button onClick={props.onAddPlace} className="profile__button profile__button_type_add" type="button" name="button" aria-label="Добавить"></button>
 			</section>
 
 			<section id="cards" className="cards" aria-label="Посещенные места"></section>

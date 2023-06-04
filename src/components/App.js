@@ -11,6 +11,7 @@ function App() {
 
 	const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
 
 	const handleEditAvatarClick = () => {
 		console.log('>>> handleEditAvatarClick');
@@ -29,12 +30,14 @@ function App() {
 	const handleAddPlaceClick = () => {
 		console.log('>>> handleAddPlaceClick');
 
-		document.querySelector('#popup-newcard').classList.add('popup_opened');
+		// document.querySelector('#popup-newcard').classList.add('popup_opened');
+		setIsAddPlacePopupOpen(true);
 	}
-
 
 	function closeAllPopups(){
 		setIsEditProfilePopupOpen(false);
+		setIsEditAvatarPopupOpen(false);
+		setIsAddPlacePopupOpen(false);
 	}
 
   return (
@@ -45,6 +48,7 @@ function App() {
 		<Main
 			onEditProfile={handleEditProfileClick}
 			onEditAvatar={handleEditAvatarClick}
+			onAddPlace={handleAddPlaceClick}
 		/>
 
 		<Footer />
@@ -99,6 +103,38 @@ function App() {
 					autoComplete="off"
 				/>
 				<span className="popup__error" id="avatar-url-input-error"></span>
+			</>)}
+		/>
+
+		<PopupWithForm
+			name="newcard"
+			title="Новое место"
+			isOpen={isAddPlacePopupOpen}
+			onClose={closeAllPopups}
+			children={(<>
+				<input
+					required
+					id="newcard-title-input"
+					className="popup__input popup__input_type_title"
+					type="text"
+					name="name"
+					placeholder="Название"
+					minLength="2"
+					maxLength="30"
+					autoComplete="off"
+				/>
+				<span className="popup__error" id="newcard-title-input-error"></span>
+
+				<input
+					required
+					id="newcard-url-input"
+					className="popup__input popup__input_type_url"
+					type="url"
+					name="link"
+					placeholder="Ссылка на картинку"
+					autoComplete="off"
+				/>
+				<span className="popup__error" id="newcard-url-input-error"></span>
 			</>)}
 		/>
 
