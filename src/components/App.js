@@ -5,6 +5,7 @@ import Main from './Main';
 import Footer from './Footer';
 
 import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 
 function App() {
 	document.body.classList.add('body');
@@ -12,6 +13,8 @@ function App() {
 	const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+
+	const [selectedCard, setSelectedCard] = React.useState(null);
 
 	const handleEditAvatarClick = () => {
 		console.log('>>> handleEditAvatarClick');
@@ -38,6 +41,14 @@ function App() {
 		setIsEditProfilePopupOpen(false);
 		setIsEditAvatarPopupOpen(false);
 		setIsAddPlacePopupOpen(false);
+
+		setSelectedCard(null);
+	}
+
+	function handleCardClick(card) {
+		console.log(`>>> handleCardClick`);
+		console.log(card);
+		setSelectedCard(card);
 	}
 
   return (
@@ -49,6 +60,7 @@ function App() {
 			onEditProfile={handleEditProfileClick}
 			onEditAvatar={handleEditAvatarClick}
 			onAddPlace={handleAddPlaceClick}
+			onCardClick={handleCardClick}
 		/>
 
 		<Footer />
@@ -137,6 +149,26 @@ function App() {
 				<span className="popup__error" id="newcard-url-input-error"></span>
 			</>)}
 		/>
+
+		<ImagePopup
+			title="Попап с картинкой"
+			card={selectedCard}
+			onClose={closeAllPopups}
+		/>
+
+			{/* <section class="popup popup_dark_overlay" id="popup-image" aria-label="Попап с картинкой">
+
+				<div class="popup__inside popup__inside_contains_image">
+
+					<figure class="popup-figure">
+						<img class="popup-figure__img image-contain" src="#" alt="Изображение">
+							<figcaption class="popup-figure__figcaption"></figcaption>
+					</figure>
+					<button class="popup__close" type="button" aria-label="Закрыть"></button>
+
+				</div>
+
+			</section> */}
 
 		{/* <PopupWithForm
 			name="newcard"
