@@ -13,11 +13,11 @@ function Main(props){
 	React.useEffect( () => {
 		api.getUserInfo()
 			.then( res => {
-				// console.log(res);
 
 				setUserName(res.name);
 				setUserDescription(res.about);
 				setUserAvatar(res.avatar);
+
 			})
 			.catch( err => console.error(err) );
 	})
@@ -25,8 +25,9 @@ function Main(props){
 	React.useEffect( () => {
 		api.getCards()
 			.then( res => {
-				// console.log(res);
+
 				setCards(res);
+
 			})
 			.catch( err => console.error(err) );
 	}, [])

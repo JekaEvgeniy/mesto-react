@@ -17,23 +17,14 @@ function App() {
 	const [selectedCard, setSelectedCard] = React.useState(null);
 
 	const handleEditAvatarClick = () => {
-		console.log('>>> handleEditAvatarClick');
-
-		// document.querySelector('#popup-avatar').classList.add('popup_opened');
 		setIsEditAvatarPopupOpen(true);
 	}
 
 	const handleEditProfileClick = () => {
-		console.log('>>> handleEditProfileClick');
-
-		// document.querySelector('#popup-profile').classList.add('popup_opened');
 		setIsEditProfilePopupOpen(true);
 	}
 
 	const handleAddPlaceClick = () => {
-		console.log('>>> handleAddPlaceClick');
-
-		// document.querySelector('#popup-newcard').classList.add('popup_opened');
 		setIsAddPlacePopupOpen(true);
 	}
 
@@ -46,8 +37,6 @@ function App() {
 	}
 
 	function handleCardClick(card) {
-		console.log(`>>> handleCardClick`);
-		console.log(card);
 		setSelectedCard(card);
 	}
 
@@ -155,38 +144,6 @@ function App() {
 			card={selectedCard}
 			onClose={closeAllPopups}
 		/>
-
-			{/* <section class="popup popup_dark_overlay" id="popup-image" aria-label="Попап с картинкой">
-
-				<div class="popup__inside popup__inside_contains_image">
-
-					<figure class="popup-figure">
-						<img class="popup-figure__img image-contain" src="#" alt="Изображение">
-							<figcaption class="popup-figure__figcaption"></figcaption>
-					</figure>
-					<button class="popup__close" type="button" aria-label="Закрыть"></button>
-
-				</div>
-
-			</section> */}
-
-		{/* <PopupWithForm
-			name="newcard"
-			title="Новое место"
-			children="children"
-		/>
-
-		<PopupWithForm
-			name="avatar"
-			title="Обновить аватар"
-			children="children"
-		/>
-
-		<PopupWithForm
-			name="question"
-			title="Вы уверены?"
-			children="children"
-		/> */}
 
 	</div>
   );

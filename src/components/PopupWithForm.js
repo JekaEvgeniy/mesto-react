@@ -1,11 +1,3 @@
-/*
-
-# ТЗ: Значение пропса name будет использоваться не только
-# в имени CSS-класса контейнера,
-# но и для атрибута name тега form.
-
-*/
-
 function PopupWithForm(props){
 	return (
 		<section className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : '' }`} id={`popup-${props.name}`}>
@@ -28,6 +20,5 @@ function PopupWithForm(props){
 		</section>
 	)
 };
-
 
 export default PopupWithForm;
