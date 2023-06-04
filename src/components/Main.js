@@ -4,7 +4,7 @@ function Main(props){
 			<section className="profile">
 				<div className="profile__figure">
 					<img className="profile__avatar" src="#" alt="Фотография" />
-					<button className="profile__button profile__button_type_avatar" type="button" name="button"
+					<button onClick={props.onEditAvatar} className="profile__button profile__button_type_avatar" type="button" name="button"
 						aria-label="Обновить фотографию"></button>
 				</div>
 

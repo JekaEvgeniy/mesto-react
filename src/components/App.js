@@ -10,11 +10,13 @@ function App() {
 	document.body.classList.add('body');
 
 	const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
 
 	const handleEditAvatarClick = () => {
 		console.log('>>> handleEditAvatarClick');
 
-		document.querySelector('#popup-avatar').classList.add('popup_opened');
+		// document.querySelector('#popup-avatar').classList.add('popup_opened');
+		setIsEditAvatarPopupOpen(true);
 	}
 
 	const handleEditProfileClick = () => {
@@ -42,6 +44,7 @@ function App() {
 
 		<Main
 			onEditProfile={handleEditProfileClick}
+			onEditAvatar={handleEditAvatarClick}
 		/>
 
 		<Footer />
@@ -77,6 +80,25 @@ function App() {
 					autoComplete="off"
 				/>
 				<span className="popup__error" id="profile-about-input-error"></span>
+			</>)}
+		/>
+
+		<PopupWithForm
+			name="avatar"
+			title="Обновить аватар"
+			isOpen={isEditAvatarPopupOpen}
+			onClose={closeAllPopups}
+			children={(<>
+				<input
+					required
+					id="avatar-url-input"
+					className="popup__input popup__input_type_url"
+					type="url"
+					name="avatar"
+					placeholder="Ссылка на картинку"
+					autoComplete="off"
+				/>
+				<span className="popup__error" id="avatar-url-input-error"></span>
 			</>)}
 		/>
 
