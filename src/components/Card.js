@@ -22,7 +22,7 @@ https://images.unsplash.com/photo-1671600939684-b8d13dfa7e1b?ixlib=rb-4.0.3&ixid
 
 */
 
-function Card({ card, onCardClick, onCardLike }){
+function Card({ card, onCardClick, onCardLike, onCardDelete }){
 	const currentUser = React.useContext(CurrentUserContext);
 	const isOwn = card.owner._id === currentUser._id;
 	const isLiked = card.likes.some(i => i._id === currentUser._id);
@@ -35,6 +35,10 @@ function Card({ card, onCardClick, onCardLike }){
 	function handleCardLike() {
 		console.log(`handleCardLike =>>>`);
 		onCardLike(card);
+	}
+
+	function handleCardDelete() {
+		onCardDelete(card);
 	}
 
 	return (
@@ -59,7 +63,13 @@ function Card({ card, onCardClick, onCardLike }){
 
 			</div>
 			{isOwn && (
-				<button className="card__button-remove" type="button" name="button" aria-label="Удалить карточку"></button>
+				<button
+					className="card__button-remove"
+					onClick={handleCardDelete}
+					type="button"
+					name="button"
+					aria-label="Удалить карточку"
+				></button>
 			)}
 
 
