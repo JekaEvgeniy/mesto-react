@@ -8,7 +8,7 @@ function Main(props){
 
 	const [cards, setCards] = React.useState([]);
 	const currentUser = React.useContext(CurrentUserContext);
-	console.log('currentUser =', currentUser);
+	// console.log('currentUser =', currentUser);
 
 	// const [userName, setUserName] = React.useState('');
 	// const [userDescription, setUserDescription] = React.useState('');

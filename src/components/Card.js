@@ -1,4 +1,31 @@
+import React from "react";
+import CurrentUserContext from "../contexts/CurrentUserContext";
+
+/*
+Теперь можно определить, должна ли в текущей карточке показываться иконка удаления. Для этого можно использовать следующий код:
+1. Определяем, являемся ли мы владельцем текущей карточки
+const isOwn = card.owner._id === currentUser._id;
+
+2. Далее в разметке используем переменную для условного рендеринга
+{isOwn && <button className='button_del' onClick={handleDeleteClick} />}
+Похожим образом можем определить, поставили ли мы уже «лайк» этой карточке:
+
+3. Определяем, есть ли у карточки лайк, поставленный текущим пользователем
+const isLiked = card.likes.some(i => i._id === currentUser._id);
+
+4. Создаём переменную, которую после зададим в `className` для кнопки лайка
+const cardLikeButtonClassName = (
+  `card__like-button ${isLiked && 'card__like-button_active'}`
+);
+
+https://images.unsplash.com/photo-1671600939684-b8d13dfa7e1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8SnBnNktpZGwtSGt8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=60
+
+*/
+
 function Card(props){
+	const currentUser = React.useContext(CurrentUserContext);
+	const isOwn = props.card.owner._id === currentUser._id;
+	const isLiked = props.card.likes.some(i => i._id === currentUser._id);
 
 	function handleCardClick() {
 		props.onCardClick(props.card);
@@ -14,12 +41,20 @@ function Card(props){
 				<h2 className="card__title">{props.card.name}</h2>
 
 				<div className="card__action">
-					<button className="card__button" type="button" name="button" aria-label="Добавить в избранное"></button>
+					<button
+						className={'card__button' + (isLiked ? ' card__button_active' : '') }
+						type="button"
+						name="button"
+						aria-label="Добавить в избранное"
+					></button>
 					<div className="card__counter">{props.card.likes.length}</div>
 				</div>
 
 			</div>
-			<button className="card__button-remove" type="button" name="button" aria-label="Удалить карточку"></button>
+			{isOwn && (
+				<button className="card__button-remove" type="button" name="button" aria-label="Удалить карточку"></button>
+			)}
+
 
 		</article>
 
