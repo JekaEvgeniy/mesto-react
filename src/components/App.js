@@ -8,6 +8,7 @@ import Footer from './Footer';
 
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
 
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
@@ -18,7 +19,7 @@ function App() {
 
 	const [selectedCard, setSelectedCard] = React.useState(null);
 
-	const [currentUser, setCurrentUser] = React.useState(null);
+	const [currentUser, setCurrentUser] = React.useState({});
 
 	const handleEditAvatarClick = () => {
 		setIsEditAvatarPopupOpen(true);
@@ -65,39 +66,7 @@ function App() {
 
 				<Footer />
 
-				<PopupWithForm
-					name="profile"
-					title="Редактировать профиль"
-					isOpen={isEditProfilePopupOpen}
-					onClose={closeAllPopups}
-					children={(<>
-						<input
-							required
-							id="profile-name-input"
-							className="popup__input popup__input_type_name"
-							type="text"
-							name="name"
-							placeholder="ФИО"
-							minLength="2"
-							maxLength="40"
-							autoComplete="off"
-						/>
-						<span className="popup__error" id="profile-name-input-error"></span>
-
-						<input
-							required
-							id="profile-about-input"
-							className="popup__input popup__input_type_status"
-							type="text"
-							name="about"
-							placeholder="Вид деятельности"
-							minLength="2"
-							maxLength="200"
-							autoComplete="off"
-						/>
-						<span className="popup__error" id="profile-about-input-error"></span>
-					</>)}
-				/>
+				<EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
 
 				<PopupWithForm
 					name="avatar"
