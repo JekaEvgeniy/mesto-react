@@ -4,7 +4,7 @@ import Card from '../components/Card';
 
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
-function Main(props){
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, handleCardLike }){
 
 	const [cards, setCards] = React.useState([]);
 	const currentUser = React.useContext(CurrentUserContext);
@@ -25,6 +25,19 @@ function Main(props){
 	// 		})
 	// 		.catch( err => console.error(err) );
 	// }, [])
+
+	function handleCardLike(card) {
+		// Снова проверяем, есть ли уже лайк на этой карточке
+		const isLiked = card.likes.some(i => i._id === currentUser._id);
+		console.log(`isLiked = ${isLiked}`);
+
+		// Отправляем запрос в API и получаем обновлённые данные карточки
+		api.toggleLike(card._id, isLiked)
+			.then((newCard) => {
+				setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+			})
+			.catch( err => console.error(err) );
+	}
 
 	React.useEffect( () => {
 		api.getCards()
@@ -47,19 +60,19 @@ function Main(props){
 			<section className="profile">
 				<div className="profile__figure">
 					<img className="profile__avatar" src={currentUser.avatar} alt="Фотография" />
-					<button onClick={props.onEditAvatar} className="profile__button profile__button_type_avatar" type="button" name="button"
+					<button onClick={onEditAvatar} className="profile__button profile__button_type_avatar" type="button" name="button"
 						aria-label="Обновить фотографию"></button>
 				</div>
 
 				<div className="profile__description">
 					<div className="profile__info">
 						<h1 className="profile__header">{currentUser.name}</h1>
-						<button onClick={props.onEditProfile} className="profile__button profile__button_type_edit" type="button" name="button" aria-label="Редактировать"></button>
+						<button onClick={onEditProfile} className="profile__button profile__button_type_edit" type="button" name="button" aria-label="Редактировать"></button>
 					</div>
 					<p className="profile__subtitle">{currentUser.about}</p>
 				</div>
 
-				<button onClick={props.onAddPlace} className="profile__button profile__button_type_add" type="button" name="button" aria-label="Добавить"></button>
+				<button onClick={onAddPlace} className="profile__button profile__button_type_add" type="button" name="button" aria-label="Добавить"></button>
 			</section>
 
 			<section id="cards" className="cards" aria-label="Посещенные места">
@@ -68,7 +81,8 @@ function Main(props){
 						<Card
 							key={card._id}
 							card={card}
-							onCardClick={props.onCardClick}
+							onCardClick={onCardClick}
+							onCardLike={handleCardLike}
 						/>
 					))
 				}

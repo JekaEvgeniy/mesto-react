@@ -22,32 +22,39 @@ https://images.unsplash.com/photo-1671600939684-b8d13dfa7e1b?ixlib=rb-4.0.3&ixid
 
 */
 
-function Card(props){
+function Card({ card, onCardClick, onCardLike }){
 	const currentUser = React.useContext(CurrentUserContext);
-	const isOwn = props.card.owner._id === currentUser._id;
-	const isLiked = props.card.likes.some(i => i._id === currentUser._id);
+	const isOwn = card.owner._id === currentUser._id;
+	const isLiked = card.likes.some(i => i._id === currentUser._id);
 
 	function handleCardClick() {
-		props.onCardClick(props.card);
+		console.log(`handleCardClick =>>>`);
+		onCardClick(card);
+	}
+
+	function handleCardLike() {
+		console.log(`handleCardLike =>>>`);
+		onCardLike(card);
 	}
 
 	return (
 
 		<article className="card">
 			<figure className="card__figure">
-				<img onClick={handleCardClick} className="card__image image-cover" src={props.card.link} loading="lazy" alt={props.card.name} />
+				<img onClick={handleCardClick} className="card__image image-cover" src={card.link} loading="lazy" alt={card.name} />
 			</figure>
 			<div className="card__info">
-				<h2 className="card__title">{props.card.name}</h2>
+				<h2 className="card__title">{card.name}</h2>
 
 				<div className="card__action">
 					<button
 						className={'card__button' + (isLiked ? ' card__button_active' : '') }
+						onClick={handleCardLike}
 						type="button"
 						name="button"
 						aria-label="Добавить в избранное"
 					></button>
-					<div className="card__counter">{props.card.likes.length}</div>
+					<div className="card__counter">{card.likes.length}</div>
 				</div>
 
 			</div>

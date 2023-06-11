@@ -79,6 +79,14 @@ class Api {
 			})
 	}
 
+	toggleLike(id, isLiked){
+		if (isLiked) {
+			return this.removeLike(id);
+		}else {
+			return this.addLike(id);
+		}
+	}
+
 
 	/*
 	* Работаем с инфополем
