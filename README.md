@@ -37,6 +37,7 @@
 * [Чеклист 8 спринта](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-8.pdf)
 * [Чеклист 9 спринта](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-9.pdf)
 * [Чеклист 10 спринта](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf)
+* [Чеклист 11 спринта](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-11.pdf)
 
 
 # Getting Started with Create React App
