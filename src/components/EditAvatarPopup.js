@@ -1,7 +1,7 @@
 import React from 'react';
 import PopupWithForm from './PopupWithForm';
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }){
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
 	const ref = React.useRef();
 
@@ -13,7 +13,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }){
 		});
 	}
 
-	return(
+	return (
 		<PopupWithForm
 			name="avatar"
 			title="Обновить аватар"
@@ -38,6 +38,3 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }){
 }
 
 export default EditAvatarPopup;
-/*
-https://images.unsplash.com/photo-1561948955-570b270e7c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=601&q=80
-*/

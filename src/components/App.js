@@ -24,7 +24,6 @@ function App() {
 
 	const [cards, setCards] = React.useState([]);
 
-
 	React.useEffect(() => {
 		api.getUserInfo()
 			.then(setCurrentUser)
@@ -53,7 +52,7 @@ function App() {
 		setIsAddPlacePopupOpen(true);
 	}
 
-	function closeAllPopups(){
+	function closeAllPopups() {
 		setIsEditProfilePopupOpen(false);
 		setIsEditAvatarPopupOpen(false);
 		setIsAddPlacePopupOpen(false);
@@ -87,7 +86,6 @@ function App() {
 	function handleCardLike(card) {
 		// Снова проверяем, есть ли уже лайк на этой карточке
 		const isLiked = card.likes.some(i => i._id === currentUser._id);
-		console.log(`isLiked = ${isLiked}`);
 
 		// Отправляем запрос в API и получаем обновлённые данные карточки
 		api.toggleLike(card._id, isLiked)
@@ -176,7 +174,7 @@ function App() {
 
 			</div>
 		</CurrentUserContext.Provider>
-  );
+	);
 }
 
 export default App;

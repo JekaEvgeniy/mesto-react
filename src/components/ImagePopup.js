@@ -1,14 +1,8 @@
-function ImagePopup(props){
+function ImagePopup(props) {
 	return (
 		<section className={`popup popup_type_image popup_dark_overlay ${props.card !== null ? 'popup_opened' : ''}`} >
 
 			<div className="popup__inside popup__inside_contains_image">
-				{
-				/* Cannot read properties of null (reading 'link')
-					TypeError: Cannot read properties of null (reading 'link')
- 				*/
-				}
-
 				<figure className="popup-figure">
 					<img className="popup-figure__img image-contain" src={props.card !== null ? props.card.link : '#'} alt="Изображение" />
 					<figcaption className="popup-figure__figcaption">{props.card !== null ? props.card.name : '#'}</figcaption>

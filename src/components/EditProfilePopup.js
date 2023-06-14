@@ -2,7 +2,7 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser }){
+function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 	const currentUser = React.useContext(CurrentUserContext);
 
 	const [name, setName] = React.useState('');
@@ -10,23 +10,22 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }){
 
 	React.useEffect(() => {
 
-		if ( currentUser.name ){
-			// Иначе Cannot read properties of undefined (reading 'name')
+		if (currentUser.name) {
+			// Без проверки можно получить: Cannot read properties of undefined (reading 'name')
 			setName(currentUser.name);
 		}
 
-		if (currentUser.about ){
-			// Иначе Cannot read properties of undefined (reading 'name')
+		if (currentUser.about) {
 			setDescription(currentUser.about);
 		}
 
 	}, [currentUser]);
 
-	function handleChangeName(e){
+	function handleChangeName(e) {
 		setName(e.target.value);
 	}
 
-	function handleChangeDesc(e){
+	function handleChangeDesc(e) {
 		setDescription(e.target.value);
 	}
 
@@ -41,7 +40,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }){
 	}
 
 
-	return(
+	return (
 		<PopupWithForm
 			name="profile"
 			title="Редактировать профиль"

@@ -79,10 +79,10 @@ class Api {
 			})
 	}
 
-	toggleLike(id, isLiked){
+	toggleLike(id, isLiked) {
 		if (isLiked) {
 			return this.removeLike(id);
-		}else {
+		} else {
 			return this.addLike(id);
 		}
 	}
