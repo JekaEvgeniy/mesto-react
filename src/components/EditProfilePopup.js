@@ -2,7 +2,7 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ isOpen, onClose }){
+function EditProfilePopup({ isOpen, onClose, onUpdateUser }){
 	const currentUser = React.useContext(CurrentUserContext);
 
 	const [name, setName] = React.useState('');
@@ -30,10 +30,22 @@ function EditProfilePopup({ isOpen, onClose }){
 		setDescription(e.target.value);
 	}
 
+	function handleSubmit(e) {
+		e.preventDefault();
+
+		// Передаём значения управляемых компонентов во внешний обработчик
+		onUpdateUser({
+			name,
+			about: description,
+		});
+	}
+
+
 	return(
 		<PopupWithForm
 			name="profile"
 			title="Редактировать профиль"
+			onSubmit={handleSubmit}
 			isOpen={isOpen}
 			onClose={onClose}
 			children={(<>

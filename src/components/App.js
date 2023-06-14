@@ -45,6 +45,15 @@ function App() {
 		setSelectedCard(card);
 	}
 
+	function handleUpdateUser(userData) {
+		api.setUserInfo(userData)
+			.then((updateUserData) => {
+				setCurrentUser(updateUserData);
+
+				closeAllPopups();
+			})
+	}
+
 	React.useEffect(() => {
 		api.getUserInfo()
 			.then(setCurrentUser)
@@ -66,7 +75,11 @@ function App() {
 
 				<Footer />
 
-				<EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
+				<EditProfilePopup
+					isOpen={isEditProfilePopupOpen}
+					onClose={closeAllPopups}
+					onUpdateUser={handleUpdateUser}
+				/>
 
 				<PopupWithForm
 					name="avatar"
