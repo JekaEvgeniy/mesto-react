@@ -25,19 +25,17 @@ function App() {
 	const [cards, setCards] = React.useState([]);
 
 	React.useEffect(() => {
+
 		api.getUserInfo()
 			.then(setCurrentUser)
 			.catch(err => console.error(err));
-	}, []);
 
-	React.useEffect(() => {
 		api.getCards()
 			.then(res => {
-
 				setCards(res);
-
 			})
 			.catch(err => console.error(err));
+
 	}, []);
 
 	const handleEditAvatarClick = () => {
@@ -71,6 +69,7 @@ function App() {
 
 				closeAllPopups();
 			})
+			.catch(err => console.error(err));
 	}
 
 	function handleUpdateAvatar(data) {
@@ -80,6 +79,7 @@ function App() {
 
 				closeAllPopups();
 			})
+			.catch(err => console.error(err));
 	}
 
 
