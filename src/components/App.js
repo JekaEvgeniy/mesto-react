@@ -10,6 +10,7 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
@@ -82,6 +83,17 @@ function App() {
 			.catch(err => console.error(err));
 	}
 
+	function handleAddNewCard(data) {
+		api.addNewCard(data)
+			.then((newCard)=> {
+				setCards((state) => [newCard, ...state] );
+				closeAllPopups();
+			})
+			.catch((err) => {
+				console.error('Warning! Attention! Achtung! Ошибка при добавлении новой карточки!');
+			})
+	}
+
 
 	function handleCardLike(card) {
 		// Снова проверяем, есть ли уже лайк на этой карточке
@@ -134,36 +146,10 @@ function App() {
 					onUpdateAvatar={handleUpdateAvatar}
 				/>
 
-				<PopupWithForm
-					name="newcard"
-					title="Новое место"
+				<AddPlacePopup
 					isOpen={isAddPlacePopupOpen}
 					onClose={closeAllPopups}
-					children={(<>
-						<input
-							required
-							id="newcard-title-input"
-							className="popup__input popup__input_type_title"
-							type="text"
-							name="name"
-							placeholder="Название"
-							minLength="2"
-							maxLength="30"
-							autoComplete="off"
-						/>
-						<span className="popup__error" id="newcard-title-input-error"></span>
-
-						<input
-							required
-							id="newcard-url-input"
-							className="popup__input popup__input_type_url"
-							type="url"
-							name="link"
-							placeholder="Ссылка на картинку"
-							autoComplete="off"
-						/>
-						<span className="popup__error" id="newcard-url-input-error"></span>
-					</>)}
+					onAddNewCard={handleAddNewCard}
 				/>
 
 				<ImagePopup
