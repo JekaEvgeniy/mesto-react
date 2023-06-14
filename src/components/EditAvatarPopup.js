@@ -5,6 +5,12 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 
 	const ref = React.useRef();
 
+	React.useEffect(() => {
+		// При открытии popup сбрасываем input
+
+		ref.current.value = ''
+	}, [isOpen]);
+
 	function handleSubmit(e) {
 		e.preventDefault();
 

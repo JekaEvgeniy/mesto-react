@@ -7,6 +7,15 @@ function AddPlacePopup({ isOpen, onClose, onAddNewCard }){
 	const [link, setLink] = React.useState('');
 	const [name, setName] = React.useState('');
 
+
+	React.useEffect(() => {
+		// При открытии popup сбрасываем input
+
+		setLink('');
+		setName('');
+
+	}, [isOpen]);
+
 	function handleChangeLink(e) {
 		setLink(e.target.value);
 	}

@@ -9,6 +9,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 	const [description, setDescription] = React.useState('');
 
 	React.useEffect(() => {
+		// хук isOpen реализует сброс значении input's при открытии popup
 
 		if (currentUser.name) {
 			// Без проверки можно получить: Cannot read properties of undefined (reading 'name')
@@ -19,7 +20,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 			setDescription(currentUser.about);
 		}
 
-	}, [currentUser]);
+	}, [currentUser, isOpen]);
 
 	function handleChangeName(e) {
 		setName(e.target.value);
