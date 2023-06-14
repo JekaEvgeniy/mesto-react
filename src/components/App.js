@@ -22,6 +22,25 @@ function App() {
 
 	const [currentUser, setCurrentUser] = React.useState({});
 
+	const [cards, setCards] = React.useState([]);
+
+
+	React.useEffect(() => {
+		api.getUserInfo()
+			.then(setCurrentUser)
+			.catch(err => console.error(err));
+	}, []);
+
+	React.useEffect(() => {
+		api.getCards()
+			.then(res => {
+
+				setCards(res);
+
+			})
+			.catch(err => console.error(err));
+	}, []);
+
 	const handleEditAvatarClick = () => {
 		setIsEditAvatarPopupOpen(true);
 	}
@@ -64,13 +83,29 @@ function App() {
 			})
 	}
 
-	React.useEffect(() => {
-		api.getUserInfo()
-			.then(setCurrentUser)
-			.catch(err => console.warn(err));
-	}, []);
 
-  return (
+	function handleCardLike(card) {
+		// Снова проверяем, есть ли уже лайк на этой карточке
+		const isLiked = card.likes.some(i => i._id === currentUser._id);
+		console.log(`isLiked = ${isLiked}`);
+
+		// Отправляем запрос в API и получаем обновлённые данные карточки
+		api.toggleLike(card._id, isLiked)
+			.then((newCard) => {
+				setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+			})
+			.catch(err => console.error(err));
+	}
+
+	function handleCardDelete(card) {
+		api.removeCard(card._id)
+			.then(() => {
+				setCards((state) => state.filter((c) => c._id !== card._id));
+			})
+			.catch(err => console.error(err));
+	}
+
+	return (
 		<CurrentUserContext.Provider value={currentUser}>
 			<div className="page">
 
@@ -80,7 +115,11 @@ function App() {
 					onEditProfile={handleEditProfileClick}
 					onEditAvatar={handleEditAvatarClick}
 					onAddPlace={handleAddPlaceClick}
+
+					cards={cards}
 					onCardClick={handleCardClick}
+					onCardLike={handleCardLike}
+					onCardDelete={handleCardDelete}
 				/>
 
 				<Footer />
