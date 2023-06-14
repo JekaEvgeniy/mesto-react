@@ -27,9 +27,9 @@ class Api {
 			headers: this._headers
 		})
 			.then(this._checkResponse)
-			.catch((err) => {
-				console.error('Ошибка! Ошибка при выводе карточек');
-			})
+			// .catch((err) => {
+			// 	console.error('Ошибка! Ошибка при выводе карточек');
+			// })
 	}
 
 	addNewCard(data) {
