@@ -19,8 +19,6 @@ function AddPlacePopup({ isOpen, onClose, onAddNewCard }){
 		e.preventDefault();
 
 		// Передаём значения управляемых компонентов во внешний обработчик
-		console.log(`link = ${link}`);
-		console.log(`name = ${name}`);
 		onAddNewCard({
 			link,
 			name
